@@ -112,6 +112,21 @@ class TicTacToe
     end
   end
   
+    def full?(board)
+    count = 0
+    @board.each do |i|
+      if(i != " ")
+        count+=1 
+      end
+    end
+    if(count == 9)
+      return true
+    else  
+      return false
+    end
+  end
+  
+  
   
 
 end 
