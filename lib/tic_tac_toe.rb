@@ -77,6 +77,41 @@ class TicTacToe
     end
   end
 
+  def won?(board)
+    
+    x_count = 0
+    o_count = 0
+    
+    WIN_COMBINATIONS.each do |i|
+      i.each do |j|
+        if(@board[j] == "X")
+          x_count+=1
+        end
+        if(@board[j] == "O")
+          o_count+=1 
+        end
+      end
+      if(x_count == 3 || o_count == 3)
+        return i.to_ary
+        return true
+        break
+      else 
+        x_count = 0 
+        o_count = 0
+      end
+    end
+    
+    if(x_count != 3 && o_count != 3)
+      return false 
+    end
+    
+    @board.each do |i|
+      if(i == " ")
+        return false
+      end
+    end
+  end
+  
   
 
 end 
