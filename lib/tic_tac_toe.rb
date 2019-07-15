@@ -59,7 +59,15 @@ class TicTacToe
     end
   end
   
-  
+  def turn_count(board)
+    count = 0
+    9.times do |i|
+      if(position_taken?(board, i) == true)
+        count+=1
+      end
+    end
+    return count
+  end
 
 
 end 
