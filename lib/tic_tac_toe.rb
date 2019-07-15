@@ -136,27 +136,27 @@ class TicTacToe
   end
   
   def over?
-    if( won? == true || draw? == true || (won? && full?(board) == true) || (won?(board) && !full?(board) == true))
+    if( won? == true || draw? == true || (won? && full? == true) || (won? && !full? == true))
       return true 
     else 
       return false
     end
   end
   
-  def winner(board)
-      if(won?(board))
-        return board[won?(board)[0]]
+  def winner
+      if(won?)
+        return @board[won?[0]]
       end
   end
   
-  def play(board)
-    until (over?(board))
-      turn(board)
+  def play
+    until (over?)
+      turn
     end
     
-    if(won?(board))
-      puts "Congratulations " + winner(board) + "!"
-    elsif(draw?(board))
+    if(won?)
+      puts "Congratulations " + winner + "!"
+    elsif(draw?)
       puts "Cat's Game!"
     end
     
