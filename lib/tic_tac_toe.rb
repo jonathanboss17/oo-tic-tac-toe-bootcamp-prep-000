@@ -27,6 +27,10 @@ class TicTacToe
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
+  def input_to_index(user_input)
+    return user_input.to_i - 1
+  end
+  
   
 
 
