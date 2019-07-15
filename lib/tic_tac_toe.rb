@@ -19,7 +19,7 @@ class TicTacToe
   [2, 4, 6],
   ]
   
-  def display_board(board)
+  def display_board
     puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts "-----------"
     puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
@@ -35,7 +35,7 @@ class TicTacToe
     @board[index] = current_player
   end
   
-  def position_taken?(board, location)
+  def position_taken?(location)
     if(@board[location] != " " && @board[location] != "")
       return true 
     else 
@@ -43,41 +43,41 @@ class TicTacToe
     end
   end
   
-  def valid_move?(board, index)
-    index.between?(0,8) && !position_taken?(board, index)
+  def valid_move?(index)
+    index.between?(0,8) && !position_taken?(index)
   end
   
-  def turn(board)
+  def turn
     puts "Please enter 1-9:"
     input = gets.strip
     index = input_to_index(input)
-    if(valid_move?(board, index))
-      move(index, current_player(board))
-      display_board(board)
+    if(valid_move?(index))
+      move(index, current_player
+      display_board
     else
-      turn(board)
+      turn
     end
   end
   
-  def turn_count(board)
+  def turn_count
     count = 0
     9.times do |i|
-      if(position_taken?(board, i) == true)
+      if(position_taken?(i) == true)
         count+=1
       end
     end
     return count
   end
   
-  def current_player(board)
-    if(turn_count(board) % 2 == 0)
+  def current_player
+    if(turn_count % 2 == 0)
       return "X"
     else
       return "O"
     end
   end
 
-  def won?(board)
+  def won?
     
     x_count = 0
     o_count = 0
@@ -112,7 +112,7 @@ class TicTacToe
     end
   end
   
-  def full?(board)
+  def full?
     count = 0
     @board.each do |i|
       if(i != " ")
@@ -127,16 +127,16 @@ class TicTacToe
   end
   
   
-  def draw?(board)
-    if(won?(board) == false && full?(board) == true)
+  def draw?
+    if(won? == false && full? == true)
       return true
     else 
       false 
     end
   end
   
-  def over?(board)
-    if( won?(board) == true || draw?(board) == true || (won?(board) && full?(board) == true) || (won?(board) && !full?(board) == true))
+  def over?
+    if( won? == true || draw? == true || (won? && full?(board) == true) || (won?(board) && !full?(board) == true))
       return true 
     else 
       return false
