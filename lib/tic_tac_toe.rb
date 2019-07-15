@@ -127,6 +127,14 @@ class TicTacToe
   end
   
   
+    def draw?(board)
+    if(won?(board) == false && full?(board) == true)
+      return true
+    else 
+      false 
+    end
+  end
+  
   
 
 end 
